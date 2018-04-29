@@ -15,6 +15,7 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.xpath;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -25,14 +26,25 @@ public class PrimeNumberControllerIntTest {
     private MockMvc mvcMock;
 
     @Test
-    public void testGivenANumberThenPrimeNumbersUptoAndIncludingReturned() throws Exception {
+    public void testGivenANumberThenPrimeNumbersUptoAndIncludingReturnedJson() throws Exception {
 
         int initialValue = 10;
 
         mvcMock.perform(get(String.format("/primes/%s", initialValue))
-                .contentType(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.initial", is(initialValue)))
                 .andExpect(jsonPath("$.primes", contains(2, 3, 5, 7)));
     }
+
+    @Test
+    public void testGivenANumberThenPrimeNumbersUptoAndIncludingReturnedXml() throws Exception {
+
+        int initialValue = 10;
+
+        mvcMock.perform(get(String.format("/primes/%s", initialValue))
+                .accept(MediaType.APPLICATION_XML))
+                .andExpect(status().isOk())
+                .andExpect(xpath("/PrimeNumberResult/initial").string("10"))
+                .andExpect(xpath("/PrimeNumberResult/primes").string("2357"));    }
 }

@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Simple sequential processing of numbers
+ */
 public class SequentialFunction extends AbstractFunction {
 
     @Override

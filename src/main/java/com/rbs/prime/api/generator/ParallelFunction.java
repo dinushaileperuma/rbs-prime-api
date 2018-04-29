@@ -6,6 +6,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+/**
+ * Simple function that takes advantage of
+ * stream parallel functionality.
+ */
 @Component
 public class ParallelFunction extends AbstractFunction {
 
