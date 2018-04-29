@@ -10,6 +10,11 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.lessThan;
 
 
+/**
+ * This is more a utility test to determine how
+ * the performance improvements faired against each other.
+ *
+ */
 public class PrimeNumberGeneratorPerformanceTest {
 
     private PrimeNumberGenerator generator = new PrimeNumberGenerator(new SequentialFunction());

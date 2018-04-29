@@ -6,6 +6,10 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 
+/**
+ * This class users uses futures to calculate prime numbers
+ *
+ */
 public class FuturesFunction extends AbstractFunction {
 
     @Override
@@ -16,6 +20,7 @@ public class FuturesFunction extends AbstractFunction {
                 .collect(Collectors.toList());
 
         return futures.stream()
+                .parallel()
                 .map(CompletableFuture::join)
                 .filter(Number::isPrime)
                 .map(Number::getValue)

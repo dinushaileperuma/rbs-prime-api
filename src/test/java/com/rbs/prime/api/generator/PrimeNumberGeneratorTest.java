@@ -15,6 +15,7 @@ public class PrimeNumberGeneratorTest {
 
     @Rule
     public ExpectedException exceptionThrown = ExpectedException.none();
+
     private SequentialFunction sequentialFunction = new SequentialFunction();
     private PrimeNumberGenerator generator = new PrimeNumberGenerator(sequentialFunction);
 

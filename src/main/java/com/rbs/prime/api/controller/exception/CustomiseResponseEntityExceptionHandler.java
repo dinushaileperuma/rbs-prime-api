@@ -16,9 +16,6 @@ import java.time.LocalDateTime;
 
 @ControllerAdvice
 @RestController
-/**
- *
- */
 public class CustomiseResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Autowired
@@ -33,6 +30,9 @@ public class CustomiseResponseEntityExceptionHandler extends ResponseEntityExcep
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
+    /**
+     * Default for IllegalArgumentException.
+     */
     @ExceptionHandler(IllegalArgumentException.class)
     public final ResponseEntity<Object> handleIllegalArgumentException(IllegalArgumentException ex, WebRequest request) {
         ExceptionResponse response = new ExceptionResponse(clockService.currentTime(), ex.getMessage(), request.getDescription(false));

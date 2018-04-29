@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Collections;
 import java.util.Objects;
 
+/**
+ * Encapsulates the result returned.
+ *
+ * The initial number and the prime numbers.
+ */
 public final class PrimeNumberResult {
 
     private final Integer initial;
